@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const cors    = require('cors')
-
+const serverless = require('serverless-http');
 const connectDB = require('../db');
 connectDB()
 
@@ -28,3 +28,5 @@ app.use("/api",         discountRoutes);  // http://localhost:5000/api/...
 app.use("/api",         orderRoutes);     // http://localhost:5000/api/user/me etc
 app.use("/api/payment", paymentRoutes);   // http://localhost:5000/api/payment/...
 
+module.exports = app;
+module.exports.handler = serverless(app);
