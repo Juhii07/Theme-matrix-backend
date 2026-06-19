@@ -28,5 +28,13 @@ app.use("/api",         discountRoutes);  // http://localhost:5000/api/...
 app.use("/api",         orderRoutes);     // http://localhost:5000/api/user/me etc
 app.use("/api/payment", paymentRoutes);   // http://localhost:5000/api/payment/...
 
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Theme Matrix Backend is running successfully"
+  });
+});
+
 module.exports = app;
 module.exports.handler = serverless(app);
